@@ -9,7 +9,36 @@
   <body class="mixpanel-platform-body">
     <h1>Hello, World!</h1>
     <script>
-      // Run queries and display results here
+  /*   MP.api.people({where: '(defined (properties["$name"]))'}).done(function(results) {
+       console.log(results);
+       
+       data = results.values();
+       
+       //273, 4150
+       
+       console.log(data['results']);
+      console.log(results.json.total);
+      //for(var i; i<results.json.total; i++){
+        
+    //  }
+      
+       var holder = results;
+       
+});
+
+*/
+
+    MP.api.query('/api/2.0/stream/query', { to_date: '2015-11-13', from_date: '2015-09-01', distinct_ids: ['4510','273'],limit: 1000},           {dataType: 'json'})
+          .done(function(json) {
+              console.log('got json\n', json);
+          })
+          .fail(function($xhr) {
+              console.log('error with request', $xhr);
+          });
+
+
+
+
     </script>
   </body>
 </html>
